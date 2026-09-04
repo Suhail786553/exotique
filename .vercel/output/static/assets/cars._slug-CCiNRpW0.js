@@ -1,0 +1,1 @@
+import{i as e,t}from"./Container-DIO0uPhb.js";var n=e(),r=()=>(0,n.jsx)(t,{className:`py-32 text-center`,children:(0,n.jsx)(`h1`,{className:`font-serif text-3xl`,children:`Something went wrong.`})});export{r as errorComponent};
