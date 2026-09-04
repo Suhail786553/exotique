@@ -1,23 +1,57 @@
 import { useState, type FormEvent, type ReactNode } from "react";
 import { toast } from "sonner";
+import { submitContact } from "@/lib/api";
+
+const CORE_FIELDS = ["name", "phone", "email", "city", "message"];
 
 export function EnquiryForm({
   submitLabel = "Send Enquiry",
+  source = "general",
   extra,
 }: {
   submitLabel?: string;
+  source?: string;
   extra?: ReactNode;
 }) {
   const [loading, setLoading] = useState(false);
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      (e.target as HTMLFormElement).reset();
+    try {
+      const form = e.currentTarget;
+      const formData = new FormData(form);
+
+      const name = String(formData.get("name") ?? "");
+      const phone = String(formData.get("phone") ?? "");
+      const email = String(formData.get("email") ?? "");
+      const city = String(formData.get("city") ?? "");
+      const message = String(formData.get("message") ?? "");
+
+      const extraData: Record<string, string> = {};
+      formData.forEach((value, key) => {
+        if (!CORE_FIELDS.includes(key) && typeof value === "string") {
+          extraData[key] = value;
+        }
+      });
+
+      await submitContact({
+        name,
+        phone,
+        email,
+        city,
+        message,
+        source,
+        extra: extraData,
+      });
+
+      form.reset();
       toast.success("Thanks — we'll be in touch shortly.");
-    }, 600);
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

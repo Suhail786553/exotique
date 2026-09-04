@@ -2,12 +2,12 @@ export const site = {
   name: "Exotique Machines",
   city: "Lucknow",
   address: "Indira Nagar, Lucknow, Uttar Pradesh",
-  phoneDisplay: "+91 98765 43210",
-  phoneRaw: "+919876543210",
+  phoneDisplay: "+91 77069 00371",
+  phoneRaw: "+91 77069 00371",
   whatsappUrl:
-    "https://wa.me/919876543210?text=Hi%20Exotique%20Machines%2C%20I%27d%20like%20to%20enquire.",
-  email: "hello@exotiquemachines.in",
-  hours: "Mon–Sat · 10:00 AM – 8:00 PM",
+    "https://wa.me/9177069 00371?text=Hi%20Exotique%20Machines%2C%20I%27d%20like%20to%20enquire.",
+  email: "infoexotiquelucknow@gmail.com",
+  hours: "Mon–Sat · 10:00 AM – 10:00 PM",
 };
 
 export const brands = [

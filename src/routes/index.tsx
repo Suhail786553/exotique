@@ -2,8 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, Phone } from "lucide-react";
 import { Container, Eyebrow } from "@/components/site/Container";
 import { CarCard } from "@/components/site/CarCard";
-import { cars } from "@/data/cars";
+import { cars as fallbackCars } from "@/data/cars";
 import { brands, faqs, highlights, site, testimonials, values } from "@/data/site";
+import { fetchFeaturedVehicles, fetchHomepageSettings } from "@/lib/api";
 import {
   Accordion,
   AccordionContent,
@@ -12,17 +13,31 @@ import {
 } from "@/components/ui/accordion";
 
 export const Route = createFileRoute("/")({
+  loader: async () => {
+    const [featured, settings] = await Promise.all([fetchFeaturedVehicles(), fetchHomepageSettings()]);
+    return { featured, settings };
+  },
   component: Home,
 });
 
 function Home() {
-  const featured = cars.slice(0, 6);
+  const { featured: apiFeatured, settings } = Route.useLoaderData();
+  const featured = apiFeatured ?? fallbackCars.slice(0, 6);
+  const heroImage = settings?.heroImage || "https://images.pexels.com/photos/20131971/pexels-photo-20131971.jpeg";
+  const heroSubtitle =
+    settings?.heroSubtitle ||
+    "Explore a handpicked collection of premium pre-owned luxury cars at Exotique Machines. From refined sedans to commanding SUVs, every vehicle is presented with personalised assistance, finance support, and a premium showroom experience in Lucknow.";
+  const featuredSectionTitle = settings?.featuredSectionTitle || "Featured Machines";
+  const featuredSectionDescription =
+    settings?.featuredSectionDescription ||
+    "A handpicked selection of pre-owned luxury cars currently available at our Lucknow showroom — each detailed, inspected, and presented with care.";
+
   return (
     <>
       {/* HERO */}
       <section className="relative -mt-20 min-h-[100svh] overflow-hidden">
         <img
-          src="https://images.pexels.com/photos/20131971/pexels-photo-20131971.jpeg"
+          src={heroImage}
           alt="Luxury car in dark showroom"
           className="absolute inset-0 h-full w-full object-cover"
         />
@@ -38,19 +53,14 @@ function Home() {
               <span className="italic">Driven by </span>
               <span className="italic text-gold">Trust.</span>
             </h1>
-            <p className="mt-6 max-w-xl text-base text-foreground/80">
-              Explore a handpicked collection of premium pre-owned luxury cars at
-              Exotique Machines. From refined sedans to commanding SUVs, every
-              vehicle is presented with personalised assistance, finance support,
-              and a premium showroom experience in Lucknow.
-            </p>
+            <p className="mt-6 max-w-xl text-base text-foreground/80">{heroSubtitle}</p>
             <div className="mt-10 flex flex-wrap gap-3">
-              <Link
-                to="/collection"
+              <a
+                href={settings?.heroCtaUrl || "/collection"}
                 className="inline-flex items-center gap-3 bg-gold px-6 py-4 text-[11px] uppercase tracking-[0.22em] text-primary-foreground"
               >
-                Explore Collection <ArrowRight className="h-4 w-4" />
-              </Link>
+                {settings?.heroCtaText || "Explore Collection"} <ArrowRight className="h-4 w-4" />
+              </a>
               <Link
                 to="/contact"
                 className="inline-flex items-center gap-3 border border-border px-6 py-4 text-[11px] uppercase tracking-[0.22em] hover:border-gold"
@@ -87,14 +97,8 @@ function Home() {
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <div>
               <Eyebrow>The Collection</Eyebrow>
-              <h2 className="mt-4 font-serif text-4xl md:text-5xl">
-                Featured Machines
-              </h2>
-              <p className="mt-4 max-w-xl text-sm text-muted-foreground">
-                A handpicked selection of pre-owned luxury cars currently available
-                at our Lucknow showroom — each detailed, inspected, and presented
-                with care.
-              </p>
+              <h2 className="mt-4 font-serif text-4xl md:text-5xl">{featuredSectionTitle}</h2>
+              <p className="mt-4 max-w-xl text-sm text-muted-foreground">{featuredSectionDescription}</p>
             </div>
             <Link
               to="/collection"

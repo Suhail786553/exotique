@@ -1,12 +1,14 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, Phone } from "lucide-react";
 import { Container, Eyebrow } from "@/components/site/Container";
+import { FallbackImage } from "@/components/site/FallbackImage";
 import { getCar } from "@/data/cars";
 import { site } from "@/data/site";
+import { fetchVehicleBySlug } from "@/lib/api";
 
 export const Route = createFileRoute("/cars/$slug")({
-  loader: ({ params }) => {
-    const car = getCar(params.slug);
+  loader: async ({ params }) => {
+    const car = (await fetchVehicleBySlug(params.slug)) ?? getCar(params.slug);
     if (!car) throw notFound();
     return { car };
   },
@@ -67,7 +69,7 @@ function CarPage() {
 
         <div className="mt-8 grid gap-12 lg:grid-cols-[1.3fr_1fr]">
           <div>
-            <img
+            <FallbackImage
               src={car.image}
               alt={`${car.brand} ${car.model}`}
               className="aspect-[4/3] w-full object-cover"

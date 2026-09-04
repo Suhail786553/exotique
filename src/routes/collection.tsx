@@ -2,8 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { z } from "zod";
 import { Container, Eyebrow } from "@/components/site/Container";
 import { CarCard } from "@/components/site/CarCard";
-import { cars } from "@/data/cars";
+import { cars as fallbackCars } from "@/data/cars";
 import { brands } from "@/data/site";
+import { fetchVehicles } from "@/lib/api";
 
 const searchSchema = z.object({
   brand: z.string().optional(),
@@ -11,6 +12,11 @@ const searchSchema = z.object({
 
 export const Route = createFileRoute("/collection")({
   validateSearch: searchSchema,
+  loaderDeps: ({ search }) => ({ brand: search.brand }),
+  loader: async ({ deps }) => {
+    const vehicles = await fetchVehicles({ brand: deps.brand });
+    return { vehicles };
+  },
   head: () => ({
     meta: [
       { title: "Collection — Pre-Owned Luxury Cars · Exotique Machines" },
@@ -33,7 +39,8 @@ export const Route = createFileRoute("/collection")({
 
 function Collection() {
   const { brand } = Route.useSearch();
-  const filtered = brand ? cars.filter((c) => c.brand === brand) : cars;
+  const { vehicles } = Route.useLoaderData();
+  const filtered = vehicles ?? (brand ? fallbackCars.filter((c) => c.brand === brand) : fallbackCars);
 
   return (
     <section className="py-16 md:py-24">

@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import type { Car } from "@/data/cars";
+import { FallbackImage } from "@/components/site/FallbackImage";
 
 export function CarCard({ car }: { car: Car }) {
   return (
@@ -10,7 +11,7 @@ export function CarCard({ car }: { car: Car }) {
       className="group block border border-border bg-card transition-colors hover:border-gold/60"
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-muted">
-        <img
+        <FallbackImage
           src={car.image}
           alt={`${car.brand} ${car.model}`}
           loading="lazy"

@@ -71,7 +71,7 @@ function Contact() {
               Share a few details and we'll be in touch to plan your visit.
             </p>
             <div className="mt-8">
-              <EnquiryForm submitLabel="Send Message" />
+              <EnquiryForm submitLabel="Send Message" source="contact" />
             </div>
           </div>
         </div>
