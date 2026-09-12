@@ -1,8 +1,8 @@
 import { A as notFound, f as lazyRouteComponent, p as createFileRoute } from "../_libs/@tanstack/react-router+[...].mjs";
-import { r as fetchVehicleBySlug } from "./api-Bmggo4v0.mjs";
+import { r as fetchVehicleBySlug } from "./api-UO9dgbYO.mjs";
 import { n as getCar } from "./cars-B8d5cLeT.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/cars._slug-DWhQwaYk.js
-var $$splitComponentImporter = () => import("./cars._slug-BHww8kZZ.mjs");
+//#region node_modules/.nitro/vite/services/ssr/assets/cars._slug-BNt7gJEf.js
+var $$splitComponentImporter = () => import("./cars._slug-B3qBj3-j.mjs");
 var $$splitErrorComponentImporter = () => import("./cars._slug-DY_CaetE.mjs");
 var $$splitNotFoundComponentImporter = () => import("./cars._slug-CWiaR39t.mjs");
 var Route = createFileRoute("/cars/$slug")({

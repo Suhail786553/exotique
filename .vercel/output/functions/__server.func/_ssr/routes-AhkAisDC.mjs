@@ -6,8 +6,8 @@ import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { t as cars } from "./cars-B8d5cLeT.mjs";
 import { c as ArrowUpRight, l as ArrowRight, n as Phone, s as ChevronDown } from "../_libs/lucide-react.mjs";
 import { t as CarCard } from "./CarCard-Bp202Vq8.mjs";
-import { t as Route } from "./routes-Bg65QgO5.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-CJ4RjbI3.js
+import { t as Route } from "./routes-6SpfK526.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-AhkAisDC.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var Accordion = Root2;

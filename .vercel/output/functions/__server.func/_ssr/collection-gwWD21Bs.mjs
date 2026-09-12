@@ -1,8 +1,8 @@
 import { f as lazyRouteComponent, p as createFileRoute } from "../_libs/@tanstack/react-router+[...].mjs";
-import { i as fetchVehicles } from "./api-Bmggo4v0.mjs";
+import { i as fetchVehicles } from "./api-UO9dgbYO.mjs";
 import { n as stringType, t as objectType } from "../_libs/zod.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/collection-8cQb88wd.js
-var $$splitComponentImporter = () => import("./collection-Bld-mnJw.mjs");
+//#region node_modules/.nitro/vite/services/ssr/assets/collection-gwWD21Bs.js
+var $$splitComponentImporter = () => import("./collection-B_CuVrSg.mjs");
 var searchSchema = objectType({ brand: stringType().optional() });
 var Route = createFileRoute("/collection")({
 	validateSearch: searchSchema,

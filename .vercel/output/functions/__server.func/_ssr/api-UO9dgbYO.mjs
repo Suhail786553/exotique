@@ -1,5 +1,5 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/api-Bmggo4v0.js
-var API_BASE_URL = "http://localhost:5000";
+//#region node_modules/.nitro/vite/services/ssr/assets/api-UO9dgbYO.js
+var API_BASE_URL = "https://api.exotiquemachines.com";
 async function apiFetch(path) {
 	try {
 		const response = await fetch(`${API_BASE_URL}/api${path}`);

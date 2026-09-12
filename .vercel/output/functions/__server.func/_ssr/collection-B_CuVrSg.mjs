@@ -3,9 +3,9 @@ import { c as require_jsx_runtime } from "../_libs/@radix-ui/react-accordion+[..
 import { n as Eyebrow, t as Container } from "./Container-Bv2gqLQl.mjs";
 import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { t as cars } from "./cars-B8d5cLeT.mjs";
-import { t as Route } from "./collection-8cQb88wd.mjs";
+import { t as Route } from "./collection-gwWD21Bs.mjs";
 import { t as CarCard } from "./CarCard-Bp202Vq8.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/collection-Bld-mnJw.js
+//#region node_modules/.nitro/vite/services/ssr/assets/collection-B_CuVrSg.js
 var import_jsx_runtime = require_jsx_runtime();
 function Collection() {
 	const { brand } = Route.useSearch();

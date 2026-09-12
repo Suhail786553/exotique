@@ -2,10 +2,10 @@ import { i as site } from "./site-rnwvzzZM.mjs";
 import { c as require_jsx_runtime } from "../_libs/@radix-ui/react-accordion+[...].mjs";
 import { n as Eyebrow, t as Container } from "./Container-Bv2gqLQl.mjs";
 import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { t as Route } from "./cars._slug-DWhQwaYk.mjs";
+import { t as Route } from "./cars._slug-BNt7gJEf.mjs";
 import { t as FallbackImage } from "./FallbackImage-oANgQMoW.mjs";
 import { n as Phone, u as ArrowLeft } from "../_libs/lucide-react.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/cars._slug-BHww8kZZ.js
+//#region node_modules/.nitro/vite/services/ssr/assets/cars._slug-B3qBj3-j.js
 var import_jsx_runtime = require_jsx_runtime();
 function CarPage() {
 	const { car } = Route.useLoaderData();
